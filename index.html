@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ReplyGenie - WhatsApp Auto Reply Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: white;
+      color: black;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 14px;
+      color: gray;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 14px;
+    }
+
+    button {
+      background: #0072ff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #005ecb;
+    }
+
+    #output {
+      background: #f1f1f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+      white-space: pre-line;
+      text-align: left;
+    }
+
+    .footer {
+      margin-top: 15px;
+      font-size: 12px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>ReplyGenie 💬</h2>
+  <p>Create professional WhatsApp auto replies in seconds 🚀</p>
+
+  <input id="business" placeholder="Business Name">
+  <textarea id="services" placeholder="List your services or products"></textarea>
+
+  <button onclick="generate()">Generate Reply</button>
+
+  <div id="output"></div>
+
+  <button onclick="copyText()">📋 Copy Reply</button>
+
+  <div class="footer">
+    Built for businesses 🚀
+  </div>
+</div>
+
+<script>
+function generate() {
+  let name = document.getElementById("business").value;
+  let services = document.getElementById("services").value;
+
+  let reply = `Hello 👋 Welcome to ${name}!
+
+We offer:
+${services}
+
+How can we assist you today? 😊`;
+
+  document.getElementById("output").innerText = reply;
+}
+
+function copyText() {
+  let text = document.getElementById("output").innerText;
+  navigator.clipboard.writeText(text);
+  alert("Reply copied! ✅");
+}
+</script>
+
+</body>
+</html>
