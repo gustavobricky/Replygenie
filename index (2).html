@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ReplyGenie - Smart WhatsApp Reply Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 30px auto;
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    h2 {
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #cbd5f5;
+    }
+
+    input, textarea, select, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 14px;
+    }
+
+    button {
+      background: #38bdf8;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #output {
+      background: #020617;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+      text-align: left;
+      white-space: pre-line;
+    }
+
+    .footer {
+      margin-top: 15px;
+      font-size: 12px;
+      color: gray;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>ReplyGenie 💬</h2>
+  <p>Smart WhatsApp replies for modern businesses 🚀</p>
+
+  <input id="business" placeholder="Business Name">
+
+  <select id="type">
+    <option>Restaurant</option>
+    <option>Salon</option>
+    <option>Barber</option>
+    <option>Shop</option>
+  </select>
+
+  <textarea id="services" placeholder="List your services or products"></textarea>
+
+  <button onclick="generate()">Generate Smart Reply</button>
+
+  <div id="output"></div>
+
+  <button onclick="copyText()">📋 Copy</button>
+  <button onclick="downloadText()">📥 Download</button>
+
+  <div class="footer">
+    Powered by ReplyGenie 🚀
+  </div>
+</div>
+
+<script>
+function generate() {
+  let name = document.getElementById("business").value;
+  let services = document.getElementById("services").value;
+  let type = document.getElementById("type").value;
+
+  let intro = "";
+  
+  if(type === "Restaurant") intro = "delicious meals 🍔";
+  if(type === "Salon") intro = "beauty services 💅";
+  if(type === "Barber") intro = "clean cuts 💈";
+  if(type === "Shop") intro = "quality products 🛒";
+
+  let reply = `Hello 👋 Welcome to ${name}!
+
+We offer ${intro}:
+${services}
+
+✔️ Fast service
+✔️ Quality guaranteed
+
+How can we assist you today? 😊`;
+
+  document.getElementById("output").innerText = reply;
+}
+
+function copyText() {
+  let text = document.getElementById("output").innerText;
+  navigator.clipboard.writeText(text);
+  alert("Copied! ✅");
+}
+
+function downloadText() {
+  let text = document.getElementById("output").innerText;
+  let blob = new Blob([text], { type: "text/plain" });
+  let link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "reply.txt";
+  link.click();
+}
+</script>
+
+</body>
+</html>
